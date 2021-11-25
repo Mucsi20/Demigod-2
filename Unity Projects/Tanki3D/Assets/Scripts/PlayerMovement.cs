@@ -18,19 +18,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(transform.forward * -1 * baseSpeed, ForceMode.Force);
+            //rb.AddForce(transform.forward * -1 * baseSpeed, ForceMode.Force);
+            rb.MovePosition(transform.position + transform.forward * -baseSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(transform.forward * baseSpeed, ForceMode.Force);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(transform.forward * turnSpeed * Time.deltaTime);
+            //rb.AddForce(transform.forward * baseSpeed, ForceMode.Force);
+            rb.MovePosition(transform.position + transform.forward * baseSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(transform.forward * turnSpeed * Time.deltaTime * -1);
+            transform.Rotate(0.0f, turnSpeed, 0.0f, Space.Self);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(0.0f, -turnSpeed, 0.0f, Space.Self);
         }
     }
 }
